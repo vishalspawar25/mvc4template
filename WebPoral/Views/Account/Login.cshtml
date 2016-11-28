@@ -1,0 +1,74 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8" />
+    @Styles.Render("~/Styles/css")
+    <style>
+        #loginbox {
+            height: auto;
+            width: 25%;
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            background-color: transparent;
+            background-color: rgba(255,255,255,0.3);
+            border-radius: 15px;
+        }
+        body {
+            background-image: url('../../Images/bg2.jpg');
+            position: relative;
+            background-position: 0 -300px;
+            background-repeat: no-repeat;
+            font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
+        }
+        label {
+            color: #fff;
+        }
+        .header {
+            background-color: transparent;
+            height: 50px;
+            font-size: 20pt;
+            padding: 0 0 0 20px;
+        }
+       .header > span {
+        color: #fff;
+        vertical-align: middle;
+         }
+    </style>
+
+</head>
+
+<body class="img-container">
+    <div class="container header">
+        <span>   <i class="fa fa-paw"></i> Company Name</span>
+    </div>
+    <div id="loginbox" class="col-mg-6 col-sm-12">
+
+        @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+            {    <div id="login-modal">
+                <div style="margin:20px 0 25px 0;" class="col-md-12">
+
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" id="username" placeholder="Username" name="username" value="" tabindex="1" autofocus>
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" value="" tabindex="2">
+                    </div>
+                    <div class="checkbox">
+                        @Html.ActionLink("New User", "Register", "Account", null, new { @class = "pull-right", @style = "color:#fff", @title = "Click here to register", @tabindex = "4" })
+                    </div>
+                    <input type="submit" value="Login" class="btn btn-success" tabindex="3" />
+                </div>
+            </div>
+        }
+    </div>
+</body>
+</html>

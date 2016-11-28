@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Company Name</title>
+    @Styles.Render("~/Styles/css")
+    <style>
+        #tray a i {
+            margin-right: 10px;
+        }
+    </style>
+
+</head>
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <!--Left Menu-->
+
+            @Html.Partial("_MenuPartial")
+
+            <!--Top menu-->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav class="" role="navigation">
+                        <div class="nav toggle">
+                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    Welcome, @Session["user"]
+                                    <span class="fa fa-angle-down"></span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-usermenu pull-right" style="background-color:#304456" id="tray">
+                                    <li><a href="@Url.Action("", "")"><i class="fa fa-user"></i> Profile</a></li>
+                                    <li><a href="@Url.Action("", "")"><i class="fa fa-wrench"></i> Setting</a></li>
+                                    <li><a href="@Url.Action("", "")"><i class="fa fa-exclamation-circle"></i>Help</a></li>
+                                    <li><a href="@Url.Action("Logout", "Account")"><i class='fa fa-sign-out'></i>Log Out</a>
+
+                                </ul>
+                            </li>
+
+                        </ul>
+
+                    </nav>
+                </div>
+            </div>
+
+            <!--Content-->
+            <div class="right_col" role="main">
+                @RenderBody()
+            </div>
+
+
+        </div>
+
+    </div>
+ 
+    <!--Footer-->
+    
+
+        <footer>
+            <div class="pull-right">
+                &copy;Copyright.@DateTime.Now.Year
+            </div>
+            
+        </footer>
+
+   
+    @Scripts.Render("~/Scripts/ThirdParty")
+
+
+</body>
+</html>

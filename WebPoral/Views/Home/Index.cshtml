@@ -1,0 +1,157 @@
+﻿@Scripts.Render("~/Scripts/Charts")
+<h2>Dashboard</h2>
+<style>
+    .top-panel {
+   
+    }
+    .frame {
+        border: solid 1px #ddd;
+        background-color: #fff;
+        padding: 0 5px;     
+        margin: 10px 0;
+    }
+
+        .frame:hover {
+            background-color: #e4e7eb;
+        }
+
+    .box div {
+        padding: 5px;
+        color: #808080;
+    }
+
+        .box div:first-child {
+            font-weight: bold;
+            font-size: xx-large;
+            background-color: #1abb9c;
+            margin: 5px;
+            border: solid 1px;
+            display: inline-block;
+            min-width: 60px;
+            color: #fff;
+            text-align:center;
+        }
+</style>
+
+<div class="row top-panel">
+    <div class="col-md-3 col-sm-6">
+        <div class="frame">
+            <div class="box">
+                <div>56</div>
+                <div>Service 1</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+        <div class="frame">
+            <div class="box">
+                <div>10</div>
+                <div>Service 2</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+        <div class="frame">
+            <div class="box">
+                <div>6</div>
+                <div>Service 3</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-6">
+        <div class="frame">
+            <div class="box">
+                <div>13</div>
+                <div>Service 4</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+@*<div class="chart col-md-10">
+    <canvas id="canvas"></canvas>
+</div>
+
+
+<script>
+    var chartData = {
+        labels: ["January", "February", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct"],
+
+        datasets: [{
+            type: 'bar',
+            label: 'Dataset',
+            backgroundColor: '#5e9edf',
+            data: [40, 13, 55, 30, 50, 65, 44, 34, 55, 24]
+
+        }]
+
+    };
+    window.onload = function () {
+        var ctx = document.getElementById("canvas").getContext("2d");
+        window.myMixedChart = new Chart(ctx, {
+            type: 'bar',
+            data: chartData,
+            options: {
+                responsive: true,
+                onClick:ckl,
+                title: {
+                    display: true,
+                    text: 'Bar Chart'
+                },
+                tooltips: {
+                    mode: 'index',
+                    intersect: true
+                }
+            }
+        });
+    };
+    function ckl()
+    {
+        alert('hi'+this.label);
+    }
+
+</script>*@
+
+<!--Google Charts-->
+<script src="~/Scripts/loader.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+        data.addRows([
+          ['Mushrooms', 3],
+          ['Onions', 1],
+          ['Olives', 1],
+          ['Zucchini', 1],
+          ['Pepperoni', 2]
+        ]);
+
+        // Set chart options
+        var options = {'title':'How Much Pizza I Ate Last Night',
+                       'width':400,
+                       'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+</script>
+ 
+
+
+    <!--Div that will hold the pie chart-->
+    <div id="chart_div"></div>
